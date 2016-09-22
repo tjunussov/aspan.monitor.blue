@@ -208,7 +208,7 @@ var difBranch = "";
 // http://test.aspan.io/api/branch_state.json?org_id=1&branch_id=7
 function loadBranchDetailsData(){
 	if($("#container_branch_details").css('display') == 'block' && branch && branch != 'null'){
-		$.getJSON(_URLS["BranchDetails"],function(json){
+		$.getJSON(_URLS["BranchDetails"]+"?org_id=1&branch_id="+branch,function(json){
 			//play(snds.onBranchLoad);
 			try {
 				loadBranchDetailsSettings(function(settings){
@@ -273,7 +273,7 @@ function loadBranchDetailsSettings(callback){
 	}
 	
 	// Load Settings
-	$.getJSON(_URLS["BranchDetailsSettings"],function(json){
+	$.getJSON(_URLS["BranchDetailsSettings"]+'?org_id=1&prefix='+prefix,function(json){
 		try {
 			var x2js2Setting = new X2JS();
 			settings_cache[prefix] = x2js2Setting.json2xml_str(json,'settings');
